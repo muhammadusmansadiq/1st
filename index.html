@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Poshmark User Score</title>
+</head>
+<body>
+	<form>
+		<label for="username">Enter Poshmark username:</label><br>
+		<input type="text" id="username" name="username"><br><br>
+		<input type="button" value="Submit" onclick="getUserScore()">
+	</form>
+
+	<script>
+		function getUserScore() {
+			var username = document.getElementById("username").value;
+			var url = "https://poshmark.com/closet/" + username;
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", url);
+			xhr.onload = function() {
+				if (xhr.status === 200) {
+					alert("User score: " + xhr.responseText);
+				}
+			};
+			xhr.send();
+		}
+	</script>
+</body>
+</html>
